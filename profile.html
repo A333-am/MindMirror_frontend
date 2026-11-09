@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror - My Profile</title>
+
+    <link rel="stylesheet" href="CSS/profile.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="mm-navbar">
+
+        <a href="dashboard.html" class="mm-brand">
+
+            <img
+                src="Images/logo.png"
+                class="mm-logo"
+                alt="MindMirror Logo"
+            >
+
+            <div class="mm-brand-text">
+                <strong>MindMirror</strong>
+                <span>AI WELLNESS SPACE</span>
+            </div>
+
+        </a>
+
+        <a href="dashboard.html" class="feature-dashboard-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- MAIN PROFILE -->
+    <main class="main-container">
+
+        <div class="page-heading">
+
+            <p class="eyebrow">PERSONAL SPACE</p>
+
+            <h1>My Profile</h1>
+
+            <p class="page-subtitle">
+                Manage your personal information and account details.
+            </p>
+
+        </div>
+
+
+        <div class="page-content">
+
+            <!-- PROFILE CARD -->
+            <section class="profile-card">
+
+                <div class="profile-card-header">
+
+                    <div class="avatar-wrapper">
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar"
+                            aria-label="Profile avatar"
+                        >
+                            MM
+                        </div>
+
+                        <span class="online-dot"></span>
+
+                    </div>
+
+                    <div class="profile-intro">
+
+                        <h2 id="profileDisplayName">
+                            MindMirror User
+                        </h2>
+
+                        <p id="profileDisplayUsername">
+                            @mindmirror_user
+                        </p>
+
+                        <span class="profile-status">
+                            ● MindMirror Member
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROFILE COMPLETION -->
+                <div class="completion-section">
+
+                    <div class="completion-header">
+
+                        <span>Profile completion</span>
+
+                        <strong id="completionPercentage">
+                            100%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-track">
+
+                        <div
+                            class="progress-fill"
+                            id="profileProgress"
+                        ></div>
+
+                    </div>
+
+                    <p>
+                        Keep your information up to date for a better experience.
+                    </p>
+
+                </div>
+
+
+                <!-- PERSONAL INFORMATION -->
+                <div class="section-title">
+
+                    <div class="section-icon">👤</div>
+
+                    <div>
+                        <h3>Personal Information</h3>
+                        <p>Your basic account information</p>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-info">
+
+                    <div class="profile-field">
+
+                        <label for="profileNameInput">Full Name</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">👤</span>
+
+                            <input
+                                type="text"
+                                id="profileNameInput"
+                                placeholder="Enter your name"
+                                disabled
+                                maxlength="50"
+                            >
+
+                        </div>
+
+                        <small class="field-error" id="nameError"></small>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <label for="profileEmailInput">Email Address</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">✉️</span>
+
+                            <input
+                                type="email"
+                                id="profileEmailInput"
+                                placeholder="Enter your email"
+                                disabled
+                            >
+
+                        </div>
+
+                        <small class="field-error" id="emailError"></small>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <label for="profileUsernameInput">Username</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">@</span>
+
+                            <input
+                                type="text"
+                                id="profileUsernameInput"
+                                placeholder="Enter username"
+                                disabled
+                                maxlength="20"
+                            >
+
+                        </div>
+
+                        <small class="field-error" id="usernameError"></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+                <div class="profile-actions">
+
+                    <button
+                        type="button"
+                        id="editProfile"
+                        class="primary-button"
+                    >
+                        ✏️ Edit Profile
+                    </button>
+
+                    <button
+                        type="button"
+                        id="saveProfile"
+                        class="primary-button"
+                        hidden
+                    >
+                        ✓ Save Changes
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelProfile"
+                        class="secondary-button"
+                        hidden
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="profileMessage"
+                    class="profile-message"
+                    aria-live="polite"
+                ></div>
+
+            </section>
+
+
+            <!-- ACCOUNT INFORMATION -->
+            <section class="account-card">
+
+                <div class="section-title">
+
+                    <div class="section-icon">🔐</div>
+
+                    <div>
+                        <h3>Account Information</h3>
+                        <p>Basic information about your MindMirror account</p>
+                    </div>
+
+                </div>
+
+
+                <div class="account-grid">
+
+                    <div class="account-item">
+
+                        <span class="account-label">Account Status</span>
+
+                        <span class="account-value status-active">
+                            ● Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="account-item">
+
+                        <span class="account-label">Member Since</span>
+
+                        <span class="account-value" id="memberSince">
+                            Not available
+                        </span>
+
+                    </div>
+
+
+                    <div class="account-item">
+
+                        <span class="account-label">Last Updated</span>
+
+                        <span class="account-value" id="lastUpdated">
+                            Not updated yet
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PRIVACY -->
+            <div class="privacy-note">
+
+                <span class="privacy-icon">🔒</span>
+
+                <div>
+
+                    <strong>Your information stays private</strong>
+
+                    <p>
+                        Your profile information is securely stored in your MindMirror account.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGOUT -->
+            <div class="logout-section">
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Log Out
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- LOGOUT MODAL -->
+    <div class="modal-overlay" id="logoutModal" hidden>
+
+        <div class="modal-card">
+
+            <div class="modal-icon">🚪</div>
+
+            <h2>Log out of MindMirror?</h2>
+
+            <p>Are you sure you want to leave your account?</p>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelLogout"
+                    class="secondary-button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    id="confirmLogout"
+                    class="logout-confirm-button"
+                >
+                    Log Out
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script type="module" src="JS/profile.js"></script>
+
+</body>
+
+</html>

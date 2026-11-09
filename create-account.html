@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI - Create Account</title>
+
+    <link rel="stylesheet" href="CSS/create-account.css">
+
+</head>
+
+
+<body class="login-page">
+
+
+    <main class="login-wrapper">
+
+        <section class="login-container">
+
+
+            <!-- Logo -->
+
+            <div class="login-logo">
+
+                <img
+                    src="Images/logo.png"
+                    class="logo"
+                    alt="MindMirror AI Logo">
+
+            </div>
+
+
+            <!-- Heading -->
+
+            <h1>
+                Create Account
+            </h1>
+
+
+            <p class="login-subtitle">
+                Begin your wellness journey
+            </p>
+
+
+            <p class="login-welcome">
+
+                Create your MindMirror account
+                to access your personal wellness space.
+
+            </p>
+
+
+            <!-- Registration Form -->
+
+            <form id="createAccountForm">
+
+
+                <!-- Name -->
+
+                <div class="input-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        required>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+
+                <!-- Username -->
+
+                <div class="input-group">
+
+                    <label for="newUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newUsername"
+                        placeholder="Create a username"
+                        required>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label for="newPassword">
+                        Password
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="newPassword"
+                            placeholder="Create a password"
+                            required>
+
+                        <button
+                            type="button"
+                            id="toggleNewPassword"
+                            class="password-toggle">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Re-enter your password"
+                        required>
+
+                </div>
+
+
+                <!-- Create Account -->
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+                    Create Account
+
+                </button>
+
+
+            </form>
+
+
+            <!-- Message -->
+
+            <p
+                id="createMessage"
+                class="forgot-message">
+            </p>
+
+
+            <!-- Back to Login -->
+
+            <div class="login-links">
+
+                <a href="index.html">
+
+                    ← Back to Login
+
+                </a>
+
+            </div>
+
+
+            <!-- Wellness Note -->
+
+            <div class="login-message">
+
+                🌿 Your wellness journey starts here.
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+<script type="module" src="JS/create-account.js"></script>
+</body>
+
+</html>

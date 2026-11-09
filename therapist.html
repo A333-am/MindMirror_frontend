@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI - AI Therapist</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/common.css">
+
+    <style>
+        .chat-main {
+            padding: 25px;
+        }
+
+        .chat-layout {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+            min-height: 650px;
+        }
+
+        .chat-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            background: #fff;
+            border: 1px solid #E6DEF3;
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .new-chat-btn {
+            background: #7357A8;
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: 10px;
+            font-family: Poppins, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .new-chat-btn:hover {
+            background: #62468F;
+        }
+
+        .sidebar-heading {
+            color: #4B3F72;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .history-list {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .history-item {
+            width: 100%;
+            text-align: left;
+            background: #FAF8F5;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-family: Poppins, sans-serif;
+            color: #33303A;
+        }
+
+        .history-item:hover,
+        .history-item.active {
+            background: #F0EAF8;
+            border-color: #7357A8;
+        }
+
+        .history-title {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .history-date {
+            display: block;
+            font-size: 11px;
+            color: #77727F;
+            margin-top: 5px;
+        }
+
+        .history-empty {
+            font-size: 13px;
+            color: #77727F;
+            text-align: center;
+            padding: 15px 5px;
+        }
+
+        .chat-container {
+            flex: 1;
+            min-width: 0;
+            background: #fff;
+            border: 1px solid #E6DEF3;
+            border-radius: 18px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-box {
+            flex: 1;
+            min-height: 350px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .chat-status {
+            font-size: 12px;
+            color: #77727F;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-mobile-toggle {
+            display: none;
+        }
+
+        @media (max-width: 750px) {
+            .chat-main {
+                padding: 12px;
+            }
+
+            .chat-layout {
+                flex-direction: column;
+            }
+
+            .chat-sidebar {
+                width: auto;
+                min-height: auto;
+            }
+
+            .history-list {
+                max-height: 220px;
+            }
+
+            .chat-container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="mm-navbar">
+    <a href="dashboard.html" class="mm-brand">
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+</header>
+
+<main class="chat-main">
+
+    <div class="chat-layout">
+        <button type="button" id="historyToggle" class="history-toggle"
+        title="Previous Chats">
+    ☰
+</button>
+
+        <!-- CHAT HISTORY SIDEBAR -->
+        <aside class="chat-sidebar">
+
+            <button type="button" id="newChatBtn" class="new-chat-btn">
+                + New Chat
+            </button>
+
+            <h3 class="sidebar-heading">Previous Chats</h3>
+
+            <div id="historyList" class="history-list">
+                <p class="history-empty">Loading previous chats...</p>
+            </div>
+
+        </aside>
+
+        <!-- CHAT AREA -->
+        <section class="chat-container">
+
+            <h1>🌿 Ven — MindMirror Companion</h1>
+
+            <p class="chat-subtitle">
+                I'm Ven, your MindMirror wellness companion.
+                I'm here to listen, help you reflect, and guide you
+                through simple CBT-based wellness activities.
+            </p>
+
+            <p id="chatStatus" class="chat-status">
+                New conversation
+            </p>
+
+            <div class="chat-box" id="chatBox">
+
+                <div class="message bot">
+                    <div class="avatar">🌿</div>
+
+                    <div class="message-text">
+                        Hello! 👋 I'm Ven, your MindMirror companion.
+                        <br><br>
+                        How are you feeling today?
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- QUICK SUGGESTIONS -->
+            <div class="quick-options">
+
+                <button class="quick-btn">😊 I'm Happy</button>
+                <button class="quick-btn">😔 I'm Sad</button>
+                <button class="quick-btn">😣 I'm Stressed</button>
+                <button class="quick-btn">😴 I'm Tired</button>
+
+            </div>
+
+            <!-- MESSAGE INPUT -->
+            <div class="chat-input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Type your message..."
+                    autocomplete="off">
+
+                <button type="button" id="voiceBtn" title="Voice Input">
+                    🎤
+                </button>
+
+                <button type="button" id="speakBtn" title="Speak or stop Ven">
+                    🔊
+                </button>
+
+                <button type="button" id="sendBtn" title="Send Message">
+                    ➤
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<script type="module" src="JS/therapist.js"></script>
+
+</body>
+</html>

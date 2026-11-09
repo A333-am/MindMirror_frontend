@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wellness Progress | MindMirror</title>
+
+    <!-- Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Progress CSS -->
+    <link rel="stylesheet" href="CSS/progress.css">
+    <link rel="stylesheet" href="CSS/common.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="mm-navbar">
+
+        <a href="dashboard.html" class="mm-brand">
+
+            <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+            <div class="mm-brand-text">
+                <strong>MindMirror</strong>
+                <span>AI WELLNESS SPACE</span>
+            </div>
+
+        </a>
+
+        <a href="dashboard.html" class="feature-dashboard-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+
+        <!-- PAGE HEADING -->
+        <section class="page-heading">
+
+            <p class="eyebrow">YOUR WELLNESS JOURNEY</p>
+
+            <h1>Wellness Progress</h1>
+
+            <p class="page-subtitle">
+                Understand your mood, activities and wellness patterns over time.
+            </p>
+
+        </section>
+
+        <!-- PREVIEW NOTICE -->
+        <div class="preview-notice" id="previewNotice">
+
+            <span class="preview-icon">i</span>
+
+            <span>
+                Your wellness progress is updated using your recorded activities and daily check-ins.
+            </span>
+
+        </div>
+
+        <!-- OVERALL PROGRESS -->
+        <section class="progress-card overall-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">OVERALL WELLNESS</p>
+
+                    <h2>Your Overall Progress</h2>
+
+                    <p class="card-description">
+                        A simple overview of your recent wellness activities.
+                    </p>
+
+                </div>
+
+                <div class="overall-score">
+
+                    <span id="overallPercentage">0%</span>
+
+                    <small>Overall</small>
+
+                </div>
+
+            </div>
+
+            <div class="overall-progress-bar">
+
+                <div class="overall-progress-fill" id="overallProgressFill"></div>
+
+            </div>
+
+            <div class="overall-stats">
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="totalCheckins">0</span>
+
+                    <span class="mini-stat-label">Check-ins</span>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="mindfulnessCount">0</span>
+
+                    <span class="mini-stat-label">Mindfulness</span>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="moodBoosterCount">0</span>
+
+                    <span class="mini-stat-label">Mood Boosters</span>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="journalCount">0</span>
+
+                    <span class="mini-stat-label">Journals</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- MOOD JOURNEY -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">MOOD PATTERN</p>
+
+                    <h2>Mood Journey</h2>
+
+                    <p class="card-description">
+                        Your recent mood pattern based on daily check-ins.
+                    </p>
+
+                </div>
+
+                <span class="trend-badge" id="moodTrend">
+                    Tracking
+                </span>
+
+            </div>
+
+            <div class="mood-summary">
+
+                <div class="summary-item">
+
+                    <span>Latest Mood</span>
+
+                    <strong id="latestMood">—</strong>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <span>Average Mood</span>
+
+                    <strong id="averageMood">—</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ACTIVITY OVERVIEW -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">WELLNESS ACTIVITIES</p>
+
+                    <h2>Activity Overview</h2>
+
+                    <p class="card-description">
+                        A visual summary of your completed wellness activities.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="activity-chart-container">
+
+                <canvas id="activityChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- ACTIVITY PROGRESS -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">ACTIVITY DETAILS</p>
+
+                    <h2>Activity Progress</h2>
+
+                    <p class="card-description">
+                        Your completed activities across MindMirror features.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="activity-list">
+
+                <!-- CHECK-INS -->
+                <div class="activity-row">
+
+                    <div class="activity-info">
+
+                        <div class="activity-icon">✓</div>
+
+                        <div>
+
+                            <h3>Daily Check-ins</h3>
+
+                            <p>Regularly record how you feel.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-value">
+
+                        <strong id="checkinActivityValue">0</strong>
+
+                        <span>check-ins</span>
+
+                    </div>
+
+                </div>
+
+                <!-- MINDFULNESS -->
+                <div class="activity-row">
+
+                    <div class="activity-info">
+
+                        <div class="activity-icon">◌</div>
+
+                        <div>
+
+                            <h3>Mindfulness</h3>
+
+                            <p>Breathing and mindfulness exercises.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-value">
+
+                        <strong id="mindfulnessActivityValue">0</strong>
+
+                        <span>sessions</span>
+
+                    </div>
+
+                </div>
+
+                <!-- MOOD BOOSTERS -->
+                <div class="activity-row">
+
+                    <div class="activity-info">
+
+                        <div class="activity-icon">✦</div>
+
+                        <div>
+
+                            <h3>Mood Boosters</h3>
+
+                            <p>Activities completed to support your mood.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-value">
+
+                        <strong id="moodBoosterActivityValue">0</strong>
+
+                        <span>activities</span>
+
+                    </div>
+
+                </div>
+
+                <!-- JOURNAL -->
+                <div class="activity-row">
+
+                    <div class="activity-info">
+
+                        <div class="activity-icon">✎</div>
+
+                        <div>
+
+                            <h3>Emotional Journal</h3>
+
+                            <p>Moments of personal reflection.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-value">
+
+                        <strong id="journalActivityValue">0</strong>
+
+                        <span>entries</span>
+
+                    </div>
+
+                </div>
+
+                <!-- VR SESSIONS -->
+                <div class="activity-row">
+
+                    <div class="activity-info">
+
+                        <div class="activity-icon">◉</div>
+
+                        <div>
+
+                            <h3>VR Relaxation</h3>
+
+                            <p>Relaxation sessions completed in VR environments.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-value">
+
+                        <strong id="vrActivityValue">0</strong>
+
+                        <span>sessions</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- VR ACTIVITY HISTORY -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">VR WELLNESS</p>
+
+                    <h2>VR Activity History</h2>
+
+                    <p class="card-description">
+                        Your completed virtual reality relaxation sessions.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div id="vrActivityHistory">
+                <p>No VR sessions completed yet.</p>
+            </div>
+
+        </section>
+
+        <!-- SOCIAL SUPPORT PROGRESS -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">SOCIAL SUPPORT</p>
+
+                    <h2>Social Support Progress</h2>
+
+                    <p class="card-description">
+                        Your recorded support activities and connections.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="overall-stats">
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="supportTotal">0</span>
+
+                    <span class="mini-stat-label">Total Actions</span>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="supportContacted">0</span>
+
+                    <span class="mini-stat-label">Reached Out</span>
+
+                </div>
+
+                <div class="mini-stat">
+
+                    <span class="mini-stat-value" id="supportNeeded">0</span>
+
+                    <span class="mini-stat-label">Still Need Support</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SLEEP & ROUTINE -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">SLEEP & ROUTINE</p>
+
+                    <h2>Sleep & Routine Progress</h2>
+
+                    <p class="card-description">
+                        Your current sleep and routine information.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="sleep-routine-grid">
+
+                <div class="sleep-routine-card">
+
+                    <div class="small-icon">☾</div>
+
+                    <div>
+
+                        <span>Average Sleep</span>
+
+                        <strong id="averageSleep">0 hrs</strong>
+
+                    </div>
+
+                </div>
+
+                <div class="sleep-routine-card">
+
+                    <div class="small-icon">✓</div>
+
+                    <div>
+
+                        <span>Routine Completion</span>
+
+                        <strong id="routinePercentage">0%</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RECENT REFLECTIONS -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">PERSONAL REFLECTION</p>
+
+                    <h2>Recent Reflections</h2>
+
+                    <p class="card-description">
+                        Your latest emotional journal reflection.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="reflection-box" id="reflectionBox">
+
+                <div class="reflection-icon">✎</div>
+
+                <div>
+
+                    <h3 id="reflectionTitle">
+                        No journal reflection recorded yet.
+                    </h3>
+
+                    <p id="reflectionText">
+                        Your latest journal entry will appear here when available.
+                    </p>
+
+                    <span id="reflectionDate">—</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- LATEST CHECK-IN -->
+        <section class="progress-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="section-label">LATEST CHECK-IN</p>
+
+                    <h2>Your Latest Mood</h2>
+
+                </div>
+
+            </div>
+
+            <div class="latest-checkin">
+
+                <div class="latest-mood-icon" id="latestMoodEmoji">—</div>
+
+                <div>
+
+                    <h3 id="latestMoodName">No check-in yet</h3>
+
+                    <p id="latestCheckinDate">
+                        Complete your first daily check-in to begin tracking.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ACTION BUTTONS -->
+        <div class="bottom-actions">
+
+            <button class="secondary-btn" onclick="goToMood()">
+                Daily Check-in
+            </button>
+
+            <button class="primary-btn" onclick="goToDashboard()">
+                Back to Dashboard
+            </button>
+
+        </div>
+
+        <p class="privacy-note">
+            Your wellness information is private and intended to help you
+            understand your personal wellness journey.
+        </p>
+
+    </main>
+
+    <!-- Progress JS -->
+    <script type="module" src="JS/progress.js"></script>
+
+</body>
+
+</html>

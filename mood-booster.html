@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror | Mood Booster</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/mood-booster.css">
+    <link rel="stylesheet" href="CSS/common.css">
+</head>
+
+<body>
+
+<header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="mood-booster-page">
+
+    <section class="page-intro">
+
+        <span class="eyebrow">POSITIVE ENGAGEMENT</span>
+
+        <h1>Mood Booster</h1>
+
+        <p>
+            Choose an activity that feels comfortable for you.
+            Explore, create, relax, learn, connect and have fun.
+        </p>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-card">
+
+        <div class="progress-info">
+
+            <div>
+                <span class="progress-label">
+                    Your Mood Booster Progress
+                </span>
+
+                <strong>
+                    <span id="completedCount">0</span> / 25 completed
+                </strong>
+            </div>
+
+            <div
+                class="progress-percent"
+                id="progressPercent"
+            >
+                0%
+            </div>
+
+        </div>
+
+        <div class="progress-bar">
+            <div id="progressFill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORY FILTER -->
+
+    <section class="filter-section">
+
+        <button class="filter-btn active" data-category="All">
+            All
+        </button>
+
+        <button class="filter-btn" data-category="Fitness">
+            Fitness
+        </button>
+
+        <button class="filter-btn" data-category="Music">
+            Music
+        </button>
+
+        <button class="filter-btn" data-category="Creative">
+            Creative
+        </button>
+
+        <button class="filter-btn" data-category="Relaxation">
+            Relaxation
+        </button>
+
+        <button class="filter-btn" data-category="Games">
+            Games
+        </button>
+
+        <button class="filter-btn" data-category="Social">
+            Social
+        </button>
+
+        <button class="filter-btn" data-category="Learning">
+            Learning
+        </button>
+
+        <button class="filter-btn" data-category="Nature">
+            Nature
+        </button>
+
+        <button class="filter-btn" data-category="Cooking">
+            Cooking
+        </button>
+
+        <button class="filter-btn" data-category="Personal">
+            Personal
+        </button>
+
+    </section>
+
+
+    <!-- ACTIVITY CARDS -->
+
+    <section class="activities-section">
+
+        <div
+            id="activityGrid"
+            class="activity-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- INTERACTIVE ACTIVITY -->
+
+    <section
+        id="activityPanel"
+        class="activity-panel hidden"
+        aria-live="polite"
+    >
+
+        <div class="activity-panel-header">
+
+            <div
+                class="selected-icon"
+                id="selectedIcon"
+            >
+                🌟
+            </div>
+
+            <div class="selected-heading">
+
+                <span
+                    class="selected-category"
+                    id="selectedCategory"
+                >
+                    Activity
+                </span>
+
+                <h2 id="selectedTitle">
+                    Activity
+                </h2>
+
+                <p id="selectedDescription">
+                    Choose an activity to begin.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- DYNAMIC INTERACTIVE AREA -->
+
+        <div
+            id="interactiveArea"
+            class="interactive-area"
+        ></div>
+
+
+        <!-- REFLECTION -->
+
+        <div
+            id="reflectionArea"
+            class="reflection-area hidden"
+        >
+
+            <h3>
+                How do you feel after this activity?
+            </h3>
+
+            <div class="feeling-options">
+
+                <button
+                    type="button"
+                    data-feeling="Better"
+                >
+                    😊 Better
+                </button>
+
+                <button
+                    type="button"
+                    data-feeling="About the same"
+                >
+                    😌 About the same
+                </button>
+
+                <button
+                    type="button"
+                    data-feeling="Still low"
+                >
+                    💜 Still low
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="activity-actions">
+
+            <button
+                type="button"
+                id="completeBtn"
+                class="primary-btn"
+                disabled
+            >
+                ✓ Mark as Completed
+            </button>
+
+            <button
+                type="button"
+                id="closeBtn"
+                class="secondary-btn"
+            >
+                Close
+            </button>
+
+        </div>
+
+        <p
+            id="activityMessage"
+            class="activity-message"
+        ></p>
+
+    </section>
+
+
+    <!-- MOTIVATION -->
+
+    <section class="motivation-card">
+
+        <div class="motivation-icon">
+            ✨
+        </div>
+
+        <div>
+            <h3>Small steps matter</h3>
+
+            <p>
+                You don't have to do everything at once.
+                One small positive activity is enough for today.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+
+<script type="module" src="JS/mood-booster.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI - VR Relaxation</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/vr.css">
+    <link rel="stylesheet" href="CSS/common.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="mm-navbar">
+
+        <a href="dashboard.html" class="mm-brand">
+            <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+            <div class="mm-brand-text">
+                <strong>MindMirror</strong>
+                <span>AI WELLNESS SPACE</span>
+            </div>
+        </a>
+
+        <a href="dashboard.html" class="feature-dashboard-btn">
+            ← Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="vr-main">
+
+        <section class="vr-container">
+
+            <!-- INTRO -->
+            <div class="vr-intro">
+
+                <span class="vr-label">
+                    IMMERSIVE WELLNESS
+                </span>
+
+                <h1>🥽 VR Relaxation</h1>
+
+                <p>
+                    Step into peaceful virtual environments
+                    designed for relaxation, mindfulness and
+                    quiet moments.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================
+                 VR SESSION SLIDES
+            ====================================== -->
+
+            <section class="vr-session-slides">
+
+
+                <!-- SLIDE 1: CHOOSE ENVIRONMENT -->
+
+                <div class="vr-slide" id="vrSlide1">
+
+                    <h2>Choose Your Environment</h2>
+
+                    <p class="section-description">
+                        Select a peaceful environment for your relaxation session.
+                    </p>
+
+                    <div class="environment-grid">
+
+                        <!-- CAVE BEACH -->
+                        <article class="environment-card"
+                            data-environment="Cave Beach"
+                            data-apk="downloads/CaveBeach.apk"
+                            data-icon="🏝️">
+
+                            <div class="environment-icon">🏝️</div>
+
+                            <h3>Cave Beach</h3>
+
+                            <p>
+                                A peaceful beach with caves and sunset surroundings.
+                            </p>
+
+                            <button type="button" class="vr-button select-environment">
+                                Select Environment
+                            </button>
+
+                        </article>
+
+
+                        <!-- FLOWER FIELD -->
+                        <article class="environment-card"
+                            data-environment="Flower Field"
+                            data-apk="downloads/FlowerField.apk"
+                            data-icon="🌸">
+
+                            <div class="environment-icon">🌸</div>
+
+                            <h3>Flower Field</h3>
+
+                            <p>
+                                A beautiful flower-filled natural environment.
+                            </p>
+
+                            <button type="button" class="vr-button select-environment">
+                                Select Environment
+                            </button>
+
+                        </article>
+
+
+                        <!-- SUNSET FOREST -->
+                        <article class="environment-card"
+                            data-environment="Sunset Forest"
+                            data-apk="downloads/Forestsunset.apk"
+                            data-icon="🌲">
+
+                            <div class="environment-icon">🌲</div>
+
+                            <h3>Sunset Forest</h3>
+
+                            <p>
+                                A peaceful forest with warm sunset light.
+                            </p>
+
+                            <button type="button" class="vr-button select-environment">
+                                Select Environment
+                            </button>
+
+                        </article>
+
+
+                        <!-- MOON VALLEY -->
+                        <article class="environment-card"
+                            data-environment="Moon Valley"
+                            data-apk="downloads/Moon.apk"
+                            data-icon="🌕">
+
+                            <div class="environment-icon">🌕</div>
+
+                            <h3>Moon Valley</h3>
+
+                            <p>
+                                A quiet nighttime landscape beneath the moon.
+                            </p>
+
+                            <button type="button" class="vr-button select-environment">
+                                Select Environment
+                            </button>
+
+                        </article>
+
+
+                        <!-- NIGHT BEACH -->
+                        <article class="environment-card"
+                            data-environment="Night Beach"
+                            data-apk="downloads/NightBeach.apk"
+                            data-icon="🌊">
+
+                            <div class="environment-icon">🌊</div>
+
+                            <h3>Night Beach</h3>
+
+                            <p>
+                                A relaxing nighttime beach with a peaceful sea.
+                            </p>
+
+                            <button type="button" class="vr-button select-environment">
+                                Select Environment
+                            </button>
+
+                        </article>
+
+                    </div>
+
+                    <p id="selectedEnvironmentMessage"></p>
+
+                    <div class="vr-slide-navigation">
+
+                        <button type="button"
+                            id="vrNextButton"
+                            class="vr-button"
+                            disabled>
+
+                            Next →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     SLIDE 2: DOWNLOAD APK
+                ====================================== -->
+
+                <div class="vr-slide" id="vrSlide2" hidden>
+
+                    <h2>Download Your VR Environment</h2>
+
+                    <p class="section-description">
+                        Download the APK for your selected environment
+                        to your Android phone.
+                    </p>
+
+                    <div class="vr-session-completion">
+
+                        <div class="environment-icon" id="selectedEnvironmentIcon">
+                            🥽
+                        </div>
+
+                        <h3 id="selectedEnvironmentTitle">
+                            Selected Environment
+                        </h3>
+
+                        <p id="selectedEnvironmentDescription">
+                            Your selected VR environment will appear here.
+                        </p>
+
+                        <a href="#"
+                            id="selectedAPKDownload"
+                            class="download-button"
+                            download>
+
+                            ⬇ Download APK
+
+                        </a>
+
+                        <p>
+                            Download the APK using your Android phone.
+                        </p>
+
+                    </div>
+
+                    <div class="vr-slide-navigation">
+
+                        <button type="button"
+                            id="vrBackButton"
+                            class="vr-button">
+
+                            ← Back
+
+                        </button>
+
+                        <button type="button"
+                            id="vrNextButton2"
+                            class="vr-button">
+
+                            Next →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     SLIDE 3: ANDROID INSTRUCTIONS
+                ====================================== -->
+
+                <div class="vr-slide" id="vrSlide3" hidden>
+
+                    <h2>How to Open Your VR Environment</h2>
+
+                    <p class="section-description">
+                        Follow these instructions to enjoy your selected
+                        environment using your Android phone.
+                    </p>
+
+                    <div class="vr-session-completion">
+
+                        <div class="environment-icon" id="vrStartIcon">
+                            🥽
+                        </div>
+
+                        <h3 id="vrStartEnvironment">
+                            Your Selected Environment
+                        </h3>
+
+                        <div class="vr-instructions">
+
+                            <p>
+                                <strong>Step 1:</strong>
+                                Download the selected APK to your Android phone.
+                            </p>
+
+                            <p>
+                                <strong>Step 2:</strong>
+                                Open the downloaded APK on your Android phone.
+                            </p>
+
+                            <p>
+                                <strong>Step 3:</strong>
+                                Install the application if it is not already installed.
+                            </p>
+
+                            <p>
+                                <strong>Step 4:</strong>
+                                Open the VR application and enter your selected environment.
+                            </p>
+
+                            <p>
+                                <strong>Step 5:</strong>
+                                Place your phone inside a compatible phone VR headset
+                                and enjoy your relaxation session.
+                            </p>
+
+                        </div>
+
+                        <p id="vrStartMessage">
+                            After opening your VR environment,
+                            return to MindMirror when your session is finished.
+                        </p>
+
+                        <button type="button"
+                            id="startVRSession"
+                            class="vr-button">
+
+                            ✓ Continue to Session
+
+                        </button>
+
+                    </div>
+
+                    <div class="vr-slide-navigation">
+
+                        <button type="button"
+                            id="vrBackButton2"
+                            class="vr-button">
+
+                            ← Back
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     SLIDE 4: COMPLETE AND SAVE SESSION
+                ====================================== -->
+
+                <div class="vr-slide" id="vrSlide4" hidden>
+
+                    <h2>Complete Your VR Session</h2>
+
+                    <p class="section-description">
+                        Enjoy your relaxation experience and return here
+                        when you have finished.
+                    </p>
+
+                    <div class="vr-session-completion">
+
+                        <div class="environment-icon" id="vrTimerIcon">
+                            🥽
+                        </div>
+
+                        <h3 id="vrTimerEnvironment">
+                            Your VR Environment
+                        </h3>
+
+                        <p>
+                            Your VR environment runs separately
+                            on your Android phone.
+                        </p>
+
+                        <p>
+                            When you finish your relaxation session,
+                            return to this page to save your session.
+                        </p>
+
+                        <p id="vrTimer">
+                            Ready to complete your session
+                        </p>
+
+                        <button type="button"
+                            id="completeVRSession"
+                            class="vr-button">
+
+                            ✓ Save Completed Session
+
+                        </button>
+
+                        <p id="vrSessionMessage"></p>
+
+                    </div>
+
+                    <div class="vr-slide-navigation">
+
+                        <button type="button"
+                            id="vrBackButton3"
+                            class="vr-button">
+
+                            ← Back
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     SLIDE 5: SESSION COMPLETED
+                ====================================== -->
+
+                <div class="vr-slide" id="vrSlide5" hidden>
+
+                    <div class="vr-session-completion">
+
+                        <div class="environment-icon">
+                            🎉
+                        </div>
+
+                        <h2>Session Completed!</h2>
+
+                        <p>
+                            Great job! You have completed your MindMirror
+                            VR relaxation session.
+                        </p>
+
+                        <p id="vrCompletionEnvironment"></p>
+
+                        <div class="vr-slide-navigation">
+
+                            <button type="button"
+                                id="viewAnotherEnvironment"
+                                class="vr-button">
+
+                                View Another Environment
+
+                            </button>
+
+                            <button type="button"
+                                id="vrDashboardButton"
+                                class="vr-button">
+
+                                Return to Dashboard
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 INFORMATION NOTE
+            ====================================== -->
+
+            <div class="vr-note">
+
+                <span>💡</span>
+
+                <p>
+                    <strong>Note:</strong>
+
+                    MindMirror VR environments run inside separate
+                    Android applications. After completing your VR
+                    experience, return to MindMirror and save your session.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script type="module" src="JS/vr.js"></script>
+
+</body>
+
+</html>

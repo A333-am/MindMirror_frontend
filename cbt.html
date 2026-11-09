@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CBT Support | MindMirror</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="CSS/common.css">
+
+
+    <link rel="stylesheet" href="CSS/cbt.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>   
+
+    <!-- MAIN CONTENT -->
+    <main class="cbt-page">
+
+        <!-- PAGE HEADING -->
+        <section class="page-heading">
+
+            <p class="eyebrow">
+                CBT SUPPORT
+            </p>
+
+            <h1>
+                Let's understand what's on your mind
+            </h1>
+
+            <p class="page-subtitle">
+                Answer these questions honestly. MindMirror will help you
+                reflect on your thoughts and suggest a supportive activity.
+            </p>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section
+            class="question-progress"
+            id="questionProgress"
+        >
+
+            <div class="progress-top">
+
+                <span id="progressText">
+                    Question 1 of 6
+                </span>
+
+                <span id="progressPercentage">
+                    17%
+                </span>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUESTION CARD -->
+        <section
+            class="question-card"
+            id="questionCard"
+        >
+
+            <div
+                class="question-icon"
+                id="questionIcon"
+            >
+                💭
+            </div>
+
+            <h2 id="questionTitle">
+                What is bothering you right now?
+            </h2>
+
+            <p
+                class="question-helper"
+                id="questionHelper"
+            >
+                Tell us what is currently making you uncomfortable,
+                worried, tired or stressed.
+            </p>
+
+            <textarea
+                id="answerInput"
+                maxlength="1000"
+                placeholder="Write your answer here..."
+            ></textarea>
+
+            <div class="character-count">
+
+                <span id="characterCount">
+                    0
+                </span>/1000
+
+            </div>
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div
+            class="question-navigation"
+            id="questionNavigation"
+        >
+
+            <button
+                class="secondary-btn"
+                id="backBtn"
+                type="button"
+            >
+                ← Back
+            </button>
+
+            <button
+                class="primary-btn"
+                id="nextBtn"
+                type="button"
+            >
+                Next →
+            </button>
+
+        </div>
+
+
+        <!-- ANALYSIS LOADING -->
+        <section
+            class="analysis-card hidden"
+            id="analysisCard"
+        >
+
+            <div class="loading-circle"></div>
+
+            <h2>
+                MindMirror is reflecting on your answers...
+            </h2>
+
+            <p>
+                Please wait while we prepare a supportive CBT response.
+            </p>
+
+        </section>
+
+
+        <!-- RESULT -->
+        <section
+            class="result-section hidden"
+            id="resultSection"
+        >
+
+            <div class="result-heading">
+
+                <p class="eyebrow">
+                    YOUR CBT REFLECTION
+                </p>
+
+                <h2>
+                    Here's what MindMirror understood
+                </h2>
+
+            </div>
+
+
+            <!-- USER THOUGHT -->
+            <div class="result-card">
+
+                <div class="result-label">
+                    YOUR THOUGHT
+                </div>
+
+                <p id="userThought"></p>
+
+            </div>
+
+
+            <!-- CBT RESPONSE -->
+            <div class="result-card">
+
+                <div class="result-label">
+                    CBT RESPONSE
+                </div>
+
+                <p id="cbtResponse"></p>
+
+            </div>
+
+
+            <!-- SUGGESTED ACTIVITY -->
+            <div class="activity-card">
+
+                <div
+                    class="activity-icon"
+                    id="activityIcon"
+                >
+                    🧘
+                </div>
+
+                <div class="activity-content">
+
+                    <div class="result-label">
+                        SUGGESTED ACTIVITY
+                    </div>
+
+                    <h3 id="activityTitle">
+                        Slow Breathing
+                    </h3>
+
+                    <p id="activityDescription">
+                        Try the slow-breathing exercise for a few minutes
+                        to pause and refocus.
+                    </p>
+
+                    <button
+                        class="activity-btn"
+                        id="startActivityBtn"
+                        type="button"
+                    >
+                        Start Breathing Exercise
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUPPORTIVE MESSAGE -->
+            <div class="support-note">
+
+                <span>💜</span>
+
+                <p>
+                    Remember, you don't have to solve everything at once.
+                    One small step is enough for now.
+                </p>
+
+            </div>
+
+
+            <!-- SESSION RECORDED -->
+            <div
+                class="session-recorded"
+                id="sessionRecorded"
+            >
+
+                <div class="session-recorded-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <h3>
+                        CBT Session Recorded
+                    </h3>
+
+                    <p id="sessionRecordedText">
+                        Your session date and time have been recorded.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT ACTIONS -->
+            <div class="result-actions">
+
+                <button
+                    class="secondary-btn"
+                    id="restartBtn"
+                    type="button"
+                >
+                    Try Another Reflection
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="goToDashboard()"
+                    type="button"
+                >
+                    Back to Dashboard
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SESSION HISTORY -->
+        <section
+            class="history-section"
+            id="historySection"
+        >
+
+            <div class="history-heading">
+
+                <p class="eyebrow">
+                    CBT HISTORY
+                </p>
+
+                <h2>
+                    Your CBT Session History
+                </h2>
+
+                <p>
+                    View the date and time of your previous CBT sessions.
+                </p>
+
+            </div>
+
+
+            <div
+                class="history-list"
+                id="historyList"
+            >
+
+                <!-- History records appear here -->
+
+            </div>
+
+
+            <div
+                class="empty-history"
+                id="emptyHistory"
+            >
+
+                <div class="empty-history-icon">
+                    🌿
+                </div>
+
+                <h3>
+                    No CBT sessions yet
+                </h3>
+
+                <p>
+                    Your completed CBT sessions will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script type="module" src="JS/cbt.js"></script>
+
+</body>
+</html>

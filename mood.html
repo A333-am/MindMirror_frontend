@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Check-in | MindMirror</title>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="CSS/mood.css">
+<link rel="stylesheet" href="CSS/common.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>   
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+    <main class="main-container">
+
+        <!-- Page Heading -->
+        <section class="page-heading">
+
+            <p class="eyebrow">DAILY WELLNESS CHECK-IN</p>
+
+            <h1>How are you feeling today?</h1>
+
+            <p class="page-subtitle">
+                Take a moment to check in with yourself.
+                Your feelings matter.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             MOOD CARD
+        ========================== -->
+        <section class="checkin-card">
+
+            <div class="section-header">
+                <div>
+                    <h2>Choose your mood</h2>
+                    <p>Select the feeling that best describes you right now.</p>
+                </div>
+
+                <span class="required-label">Required</span>
+            </div>
+
+
+            <div class="mood-grid" id="moodGrid">
+
+                <button class="mood-option" data-mood="Happy">
+                    <span class="mood-emoji">😊</span>
+                    <span>Happy</span>
+                </button>
+
+                <button class="mood-option" data-mood="Excited">
+                    <span class="mood-emoji">🤩</span>
+                    <span>Excited</span>
+                </button>
+
+                <button class="mood-option" data-mood="Loved">
+                    <span class="mood-emoji">🥰</span>
+                    <span>Loved</span>
+                </button>
+
+                <button class="mood-option" data-mood="Calm">
+                    <span class="mood-emoji">😌</span>
+                    <span>Calm</span>
+                </button>
+
+                <button class="mood-option" data-mood="Confident">
+                    <span class="mood-emoji">😎</span>
+                    <span>Confident</span>
+                </button>
+
+                <button class="mood-option" data-mood="Grateful">
+                    <span class="mood-emoji">🙏</span>
+                    <span>Grateful</span>
+                </button>
+
+                <button class="mood-option" data-mood="Content">
+                    <span class="mood-emoji">🙂</span>
+                    <span>Content</span>
+                </button>
+
+                <button class="mood-option" data-mood="Relaxed">
+                    <span class="mood-emoji">☺️</span>
+                    <span>Relaxed</span>
+                </button>
+
+                <button class="mood-option" data-mood="Neutral">
+                    <span class="mood-emoji">😐</span>
+                    <span>Neutral</span>
+                </button>
+
+                <button class="mood-option" data-mood="Confused">
+                    <span class="mood-emoji">😕</span>
+                    <span>Confused</span>
+                </button>
+
+                <button class="mood-option" data-mood="Worried">
+                    <span class="mood-emoji">😟</span>
+                    <span>Worried</span>
+                </button>
+
+                <button class="mood-option" data-mood="Sad">
+                    <span class="mood-emoji">😔</span>
+                    <span>Sad</span>
+                </button>
+
+                <button class="mood-option" data-mood="Disappointed">
+                    <span class="mood-emoji">😞</span>
+                    <span>Disappointed</span>
+                </button>
+
+                <button class="mood-option" data-mood="Lonely">
+                    <span class="mood-emoji">🥺</span>
+                    <span>Lonely</span>
+                </button>
+
+                <button class="mood-option" data-mood="Angry">
+                    <span class="mood-emoji">😠</span>
+                    <span>Angry</span>
+                </button>
+
+                <button class="mood-option" data-mood="Frustrated">
+                    <span class="mood-emoji">😤</span>
+                    <span>Frustrated</span>
+                </button>
+
+                <button class="mood-option" data-mood="Anxious">
+                    <span class="mood-emoji">😰</span>
+                    <span>Anxious</span>
+                </button>
+
+                <button class="mood-option" data-mood="Tired">
+                    <span class="mood-emoji">😴</span>
+                    <span>Tired</span>
+                </button>
+
+                <button class="mood-option" data-mood="Stressed">
+                    <span class="mood-emoji">😫</span>
+                    <span>Stressed</span>
+                </button>
+
+                <button class="mood-option" data-mood="Scared">
+                    <span class="mood-emoji">😨</span>
+                    <span>Scared</span>
+                </button>
+
+            </div>
+
+            <p class="field-error" id="moodError"></p>
+
+        </section>
+
+
+        <!-- =========================
+             INTENSITY
+        ========================== -->
+        <section class="checkin-card">
+
+            <div class="section-header">
+                <div>
+                    <h2>How strongly are you feeling this?</h2>
+
+                    <p>
+                        Move the slider to describe the intensity of your mood.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="intensity-container">
+
+                <div class="intensity-value">
+                    <span id="intensityValue">5</span>
+                    <span>/ 10</span>
+                </div>
+
+                <input
+                    type="range"
+                    id="moodIntensity"
+                    min="1"
+                    max="10"
+                    value="5"
+                >
+
+                <div class="range-labels">
+                    <span>Very mild</span>
+                    <span>Very strong</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NOTE
+        ========================== -->
+        <section class="checkin-card">
+
+            <div class="section-header">
+                <div>
+                    <h2>Tell us a little more</h2>
+
+                    <p>
+                        Share anything you'd like to remember about today.
+                    </p>
+                </div>
+
+                <span class="optional-label">Optional</span>
+            </div>
+
+
+            <textarea
+                id="moodNote"
+                maxlength="500"
+                placeholder="What is on your mind today?"
+            ></textarea>
+
+            <div class="character-count">
+                <span id="characterCount">0</span>/500
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MESSAGE
+        ========================== -->
+        <div
+            id="checkinMessage"
+            class="checkin-message"
+            role="alert"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- =========================
+             ACTIONS
+        ========================== -->
+        <div class="action-area">
+
+            <button
+                type="button"
+                class="secondary-btn"
+                onclick="goToProgress()"
+            >
+                View Progress
+            </button>
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="saveCheckinBtn"
+            >
+                Save Check-in
+            </button>
+
+        </div>
+
+
+        <p class="privacy-note">
+            Your check-in is kept private and is used to help you understand
+            your wellness journey.
+        </p>
+
+    </main>
+
+
+    <script type="module" src="JS/mood.js"></script>
+
+</body>
+</html>

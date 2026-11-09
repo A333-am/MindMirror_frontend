@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMirror - Emergency Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/emergency.css">
+    <link rel="stylesheet" href="CSS/common.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+     <header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>
+    
+
+    <main class="main-container">
+
+        <!-- PAGE HEADING -->
+        <section class="page-heading">
+            <p class="eyebrow">MINDMIRROR SUPPORT</p>
+            <h1>Emergency Support</h1>
+            <p class="page-subtitle">
+                If MindMirror detects an emergency during voice support,
+                it can start the emergency-support workflow immediately.
+            </p>
+        </section>
+
+        <!-- EMERGENCY STATUS -->
+        <section class="emergency-status-card" id="emergencyStatusCard">
+            <div class="emergency-status-icon">🚨</div>
+            <div class="emergency-status-content">
+                <span class="status-label">EMERGENCY STATUS</span>
+                <h2 id="emergencyStatusTitle">No emergency detected</h2>
+                <p id="emergencyStatusText">
+                    Voice emergency monitoring is ready.
+                </p>
+            </div>
+        </section>
+
+        <!-- SAFETY CHECK -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">🛡</div>
+                <div class="card-heading-text">
+                    <p class="section-label">SAFETY CHECK</p>
+                    <h2>Are you safe right now?</h2>
+                    <p class="card-description">
+                        If you need immediate help, activate emergency support.
+                    </p>
+                </div>
+            </div>
+
+            <div class="safety-options">
+                <button type="button" class="safety-btn safe" id="safeBtn">
+                    ✓ I'm Safe
+                </button>
+
+                <button type="button" class="safety-btn help" id="helpBtn">
+                    ! I Need Help
+                </button>
+            </div>
+
+            <div id="safetyMessage" class="status-message" aria-live="polite"></div>
+        </section>
+
+        <!-- VOICE EMERGENCY -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">🎙</div>
+                <div class="card-heading-text">
+                    <p class="section-label">VOICE EMERGENCY</p>
+                    <h2>Voice Emergency Detection</h2>
+                    <p class="card-description">
+                        Speak naturally. MindMirror listens for emergency
+                        phrases while voice support is active.
+                    </p>
+                </div>
+            </div>
+
+            <div class="voice-status" id="voiceStatus">
+                <span class="voice-status-dot" id="voiceStatusDot"></span>
+                <span id="voiceStatusText">Voice support is not active</span>
+            </div>
+
+            <div class="voice-controls">
+                <button type="button" class="primary-btn" id="startVoiceBtn">
+                    🎙 Start Voice Support
+                </button>
+
+                <button type="button" class="secondary-btn" id="stopVoiceBtn" disabled>
+                    Stop
+                </button>
+            </div>
+
+            <div class="transcript-box">
+                <div class="transcript-label">Live Transcript</div>
+                <div class="transcript-text" id="transcriptText">
+                    Your speech will appear here while voice support is active.
+                </div>
+            </div>
+
+            <div class="emergency-alert" id="emergencyAlert" aria-live="assertive">
+                <strong>Emergency phrase detected</strong>
+                <p id="emergencyAlertText">
+                    Emergency support is being activated.
+                </p>
+            </div>
+        </section>
+
+        <!-- EMERGENCY PROFILE -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">👤</div>
+                <div class="card-heading-text">
+                    <p class="section-label">EMERGENCY PROFILE</p>
+                    <h2>Emergency support type</h2>
+                    <p class="card-description">
+                        Select your age group so MindMirror can show the
+                        appropriate emergency-support options.
+                    </p>
+                </div>
+            </div>
+
+            <div class="age-options">
+                <button type="button" class="age-btn" id="adultBtn">
+                    <span class="age-icon">👤</span>
+                    <span>
+                        <strong>18 or older</strong>
+                        <small>Adult emergency support</small>
+                    </span>
+                </button>
+
+                <button type="button" class="age-btn" id="childBtn">
+                    <span class="age-icon">🧒</span>
+                    <span>
+                        <strong>Under 18</strong>
+                        <small>Child / young person support</small>
+                    </span>
+                </button>
+            </div>
+
+            <div class="child-help-card" id="childHelpCard">
+                <div class="child-help-icon">🧒</div>
+                <div class="child-help-content">
+                    <h3>Child / Young Person Help</h3>
+                    <p>
+                        If you are under 18 and need immediate support,
+                        you can contact Child Helpline 1098 or emergency
+                        services at 112.
+                    </p>
+                </div>
+
+                <div class="child-help-actions">
+                    <a href="tel:1098" class="child-help-btn">Call 1098</a>
+                    <a href="tel:112" class="emergency-btn">Call 112</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">📍</div>
+                <div class="card-heading-text">
+                    <p class="section-label">EMERGENCY LOCATION</p>
+                    <h2>Location Support</h2>
+                    <p class="card-description">
+                        Your location can be passed to the emergency-support
+                        workflow after location permission is granted.
+                    </p>
+                </div>
+            </div>
+
+            <div class="location-status" id="locationStatus">
+                <span class="location-dot" id="locationDot"></span>
+                <span id="locationStatusText">
+                    Location has not been requested.
+                </span>
+            </div>
+
+            <div class="location-coordinates">
+                <div class="coordinate-box">
+                    <span>Latitude</span>
+                    <strong id="latitudeValue">—</strong>
+                </div>
+
+                <div class="coordinate-box">
+                    <span>Longitude</span>
+                    <strong id="longitudeValue">—</strong>
+                </div>
+            </div>
+
+            <!-- NEW REQUEST LOCATION BUTTON -->
+            <div class="location-button-group">
+
+    <button type="button"
+        class="primary-btn"
+        id="requestLocationBtn">
+        Request Location
+    </button>
+
+    <button type="button"
+        class="primary-btn"
+        id="mapBtn"
+        disabled>
+        View Location on Map
+    </button>
+
+</div>
+
+            <!-- LOCATION CONSENT -->
+            <div class="location-consent" id="locationConsent" hidden>
+
+                <p id="locationConsentText">
+                    Do you agree to share your location with your saved trusted contact
+                    during an emergency?
+                </p>
+
+                <div class="location-actions" id="firstConsentActions">
+    <button type="button" class="primary-btn" id="firstConsentBtn">
+        Yes, I agree
+    </button>
+
+    <button type="button" class="secondary-btn" id="denyConsentBtn">
+        No
+    </button>
+</div>
+
+<div class="location-actions" id="finalConsentActions" hidden>
+    <button type="button" class="primary-btn" id="finalConsentBtn">
+        Confirm location sharing
+    </button>
+
+    <button type="button" class="secondary-btn" id="cancelConsentBtn">
+        Cancel
+    </button>
+</div>
+
+            </div>
+        </section>
+
+        <!-- TRUSTED CONTACT -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">☎</div>
+                <div class="card-heading-text">
+                    <p class="section-label">TRUSTED CONTACT</p>
+                    <h2>Emergency Contact</h2>
+                    <p class="card-description">
+                        Add the person who should receive your emergency information.
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">Contact Name</label>
+                    <input type="text" id="contactName" placeholder="Enter contact name">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactPhone">Phone Number</label>
+                    <input type="tel" id="contactPhone" placeholder="+91XXXXXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="contactRelation">Relationship</label>
+                    <input type="text" id="contactRelation" placeholder="Parent, guardian, friend...">
+                </div>
+
+                <button type="button"
+                    class="primary-btn save-contact-btn"
+                    id="saveContactBtn">
+                    Save Emergency Contact
+                </button>
+            </div>
+
+            <div class="saved-contact" id="savedContact">
+    <div class="saved-contact-icon">✓</div>
+
+    <div>
+        <strong id="savedContactName">No contact saved</strong>
+        <span id="savedContactDetails"></span>
+    </div>
+
+    <div class="contact-management">
+    <button type="button" class="primary-btn" id="editContactBtn">
+        Edit
+    </button>
+
+    <button type="button" class="delete-contact-btn" id="deleteContactBtn">
+        Delete
+    </button>
+</div>
+</div>
+        </section>
+
+        <!-- EMERGENCY CALL -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">🚨</div>
+                <div class="card-heading-text">
+                    <p class="section-label">EMERGENCY ACTION</p>
+                    <h2>Get Immediate Help</h2>
+                    <p class="card-description">
+                        When an emergency is detected, MindMirror will
+                        attempt to use your configured emergency contact.
+                    </p>
+                </div>
+            </div>
+
+            <div class="call-options">
+                <div class="call-option">
+                    <div class="call-option-info">
+                        <div class="call-option-icon">☎</div>
+                        <div class="call-option-text">
+                            <h3>Emergency Contact</h3>
+                            <p id="contactCallDescription">
+                                No emergency contact configured.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button type="button" class="primary-btn" id="contactCallBtn">
+                        Call Contact
+                    </button>
+                </div>
+
+                <div class="call-option">
+                    <div class="call-option-info">
+                        <div class="call-option-icon">🚨</div>
+                        <div class="call-option-text">
+                            <h3>Emergency Services</h3>
+                            <p>Emergency number: 112</p>
+                        </div>
+                    </div>
+
+                    <button type="button" class="emergency-btn" id="emergencyServicesBtn">
+                        Call 112
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- AFTER EMERGENCY -->
+        <section class="emergency-card">
+            <div class="card-heading">
+                <div class="card-icon">♡</div>
+                <div class="card-heading-text">
+                    <p class="section-label">AFTER IMMEDIATE HELP</p>
+                    <h2>Continue Getting Support</h2>
+                    <p class="card-description">
+                        Once immediate safety has been addressed,
+                        MindMirror can help you stay connected.
+                    </p>
+                </div>
+            </div>
+
+            <div class="after-safe-grid">
+                <div class="after-safe-card">
+                    <div class="after-safe-icon">🤖</div>
+                    <h3>AI Wellness Assistant</h3>
+                    <p>Talk with the MindMirror wellness assistant for supportive guidance.</p>
+                    <a href="therapist.html">Open AI Assistant</a>
+                </div>
+
+                <div class="after-safe-card">
+                    <div class="after-safe-icon">👥</div>
+                    <h3>Social Support</h3>
+                    <p>Connect with your trusted support circle.</p>
+                    <a href="social-support.html">Open Social Support</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMMEDIATE SAFETY -->
+        <section class="emergency-card immediate-action">
+            <div class="notice-box">
+                <h3>If you are in immediate danger</h3>
+                <p>
+                    Move somewhere safer if possible and contact emergency
+                    services or a trusted person nearby.
+                </p>
+                <a href="tel:112" class="emergency-btn large-emergency-btn">
+                    🚨 Call 112
+                </a>
+            </div>
+        </section>
+
+        <!-- BACK -->
+        <div class="bottom-actions">
+            <a href="dashboard.html" class="primary-btn">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+        <p class="privacy-note">
+            MindMirror is a wellness-support application and does not replace
+            professional emergency services or professional mental-health care.
+        </p>
+
+    </main>
+
+    <script type="module" src="JS/emergency.js"></script>
+
+</body>
+</html>

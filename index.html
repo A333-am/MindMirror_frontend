@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMirror AI</title>
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+
+<body class="login-page">
+
+    <main class="login-wrapper">
+
+        <section class="login-container">
+
+            <!-- Logo -->
+            <div class="login-logo">
+                <img src="Images/logo.png"
+                     class="logo"
+                     alt="MindMirror AI Logo">
+            </div>
+
+            <!-- Heading -->
+            <h1>MindMirror AI</h1>
+
+            <p class="login-subtitle">
+                Your Mental Wellness Companion
+            </p>
+
+            <p class="login-welcome">
+                Take a moment for yourself.  
+                Your journey toward a calmer mind starts here.
+            </p>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your username"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required>
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="password-toggle">
+                            👁
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Login Button -->
+                <button
+                    type="submit"
+                    class="login-button">
+                    Login
+                </button>
+                <p id="loginMessage" class="login-message"></p>
+
+            </form>
+
+
+            <!-- Links -->
+            <div class="login-links">
+
+    <a href="forgot-password.html">
+        Forgot Password?
+    </a>
+
+    <a href="create-account.html">
+        Create Account
+    </a>
+
+</div>
+
+            <!-- Small wellness message -->
+            <div class="login-message">
+                🌿 A safe space to breathe, reflect and grow.
+            </div>
+
+        </section>
+
+    </main>
+
+   <script type="module" src="JS/login.js"></script>
+</body>
+
+</html>

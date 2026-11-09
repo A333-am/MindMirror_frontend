@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relax & Breathe | MindMirror</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Relax Page CSS -->
+    <link rel="stylesheet" href="CSS/relax.css">
+    <link rel="stylesheet" href="CSS/common.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="relax-page">
+
+        <div class="relax-container">
+
+
+            <!-- =================================================
+                 PAGE INTRO
+            ================================================== -->
+
+            <section class="page-intro">
+
+                <div class="intro-icon">
+                    🌿
+                </div>
+
+                <div>
+                    <h2>Relax &amp; Breathe</h2>
+
+                    <p>
+                        Take a moment to slow down, breathe gently,
+                        and relax your mind.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 VEN AVATAR
+            ================================================== -->
+
+            <section class="ven-section">
+
+                <div class="ven-glow"></div>
+
+                <img
+                    src="Images/mind.png"
+                    alt="Ven AI Wellness Companion"
+                    class="ven-avatar"
+                    id="venAvatar"
+                >
+
+                <div class="ven-text">
+
+                    <h3>
+                        Hi! I'm Ven 💜
+                    </h3>
+
+                    <p>
+                        Breathe with me.
+                    </p>
+
+                    <p>
+                        You are doing great.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 BREATHING ACTIVITY
+            ================================================== -->
+
+            <section class="breathing-card">
+
+
+                <!-- Current exercise -->
+
+                <div class="exercise-status">
+
+                    <span class="status-label">
+                        CURRENT EXERCISE
+                    </span>
+
+                    <h3 id="breathingText">
+                        Box Breathing
+                    </h3>
+
+                    <p id="breathingMessage">
+                        Press Start Exercise when you're ready.
+                    </p>
+
+                </div>
+
+
+                <!-- =============================================
+                     EXERCISE SELECTION
+                ============================================== -->
+
+                <div class="selection-area">
+
+                    <h3>
+                        Choose a breathing exercise
+                    </h3>
+
+                    <p>
+                        Select an exercise that feels comfortable for you.
+                    </p>
+
+
+                    <div class="breathing-type-buttons">
+
+                        <button
+                            type="button"
+                            class="breathing-type-btn active"
+                            data-exercise="box"
+                        >
+                            🌿 Box Breathing
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="breathing-type-btn"
+                            data-exercise="slow"
+                        >
+                            🍃 Slow Breathing
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="breathing-type-btn"
+                            data-exercise="deep"
+                        >
+                            🌬️ Deep Breathing
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     TIMER
+                ============================================== -->
+
+                <div class="breathing-display">
+
+                    <div class="breathing-circle" id="breathingCircle">
+
+                        <span id="phaseLabel">
+                            Ready
+                        </span>
+
+                        <strong id="timer">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     CONTROLS
+                ============================================== -->
+
+                <div class="breathing-controls">
+
+                    <button
+                        type="button"
+                        id="startBreathing"
+                        class="primary-btn"
+                    >
+                        ▶ Start Exercise
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="stopBreathing"
+                        class="secondary-btn"
+                        disabled
+                    >
+                        ■ Stop
+                    </button>
+
+                </div>
+
+
+                <!-- =============================================
+                     CYCLE INFORMATION
+                ============================================== -->
+
+                <div class="cycle-info">
+
+                    <span id="cycleText">
+                        Cycle 0 of 3
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 BREATHING EXERCISES INFORMATION
+            ================================================== -->
+
+            <section class="information-section">
+
+                <div class="section-heading">
+
+                    <span>🌿</span>
+
+                    <div>
+                        <h2>Breathing Exercises</h2>
+
+                        <p>
+                            Choose the breathing technique that feels right for you.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="exercise-grid">
+
+
+                    <!-- BOX -->
+
+                    <article class="exercise-info-card">
+
+                        <div class="exercise-icon">
+                            🟪
+                        </div>
+
+                        <h3>
+                            Box Breathing
+                        </h3>
+
+                        <p>
+                            A balanced breathing technique
+                            for calm and focus.
+                        </p>
+
+                        <span class="pattern">
+                            4 – 4 – 4 – 4
+                        </span>
+
+                    </article>
+
+
+                    <!-- SLOW -->
+
+                    <article class="exercise-info-card">
+
+                        <div class="exercise-icon">
+                            🍃
+                        </div>
+
+                        <h3>
+                            Slow Breathing
+                        </h3>
+
+                        <p>
+                            Gentle breathing designed to
+                            slow down your breathing rhythm.
+                        </p>
+
+                        <span class="pattern">
+                            4 – 2 – 6
+                        </span>
+
+                    </article>
+
+
+                    <!-- DEEP -->
+
+                    <article class="exercise-info-card">
+
+                        <div class="exercise-icon">
+                            🌬️
+                        </div>
+
+                        <h3>
+                            Deep Breathing
+                        </h3>
+
+                        <p>
+                            A deeper breathing pattern for
+                            relaxation and mindful breathing.
+                        </p>
+
+                        <span class="pattern">
+                            6 – 2 – 8
+                        </span>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script type="module" src="JS/relax.js"></script>
+
+</body>
+
+</html>

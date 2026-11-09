@@ -1,0 +1,1614 @@
+/* =========================================================
+   MINDMIRROR
+   SLEEP COMPANION
+   FRONTEND ONLY
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+:root {
+
+    --background: #FAF8F5;
+
+    --white: #FFFFFF;
+
+    --primary: #7357A8;
+
+    --primary-hover: #62468F;
+
+    --dark-purple: #4B3F72;
+
+    --secondary-purple: #51456F;
+
+    --soft-lavender: #F3EFFB;
+
+    --very-light-lavender: #F8F5FC;
+
+    --border: #E6DEF3;
+
+    --text: #33303A;
+
+    --muted: #77727F;
+
+    --success: #4F8A68;
+
+    --error: #B85C5C;
+
+    --warning: #9B7A45;
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
+
+    line-height: 1.6;
+}
+
+
+button,
+input,
+textarea,
+select {
+
+    font-family:
+        "Poppins",
+        Arial,
+        sans-serif;
+
+}
+
+
+button,
+a {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sleep-header {
+
+    height: 86px;
+
+    background: var(--white);
+
+    border-bottom:
+        1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 40px;
+
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.mm-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    color: inherit;
+}
+
+
+.mm-logo {
+
+    width: 43px;
+
+    height: 43px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+.mm-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+
+.mm-brand-text strong {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+
+    color: var(--dark-purple);
+}
+
+
+.mm-brand-text span {
+
+    margin-top: 4px;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+
+    line-height: 1.1;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   DASHBOARD BUTTON
+   ========================================================= */
+
+.dashboard-button {
+
+    width: 150px;
+
+    height: 52px;
+
+    border-radius: 28px;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.dashboard-button:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.sleep-page {
+
+    width: min(
+        900px,
+        calc(100% - 40px)
+    );
+
+    margin:
+        0 auto;
+
+    padding:
+        52px 0 70px;
+}
+
+
+/* =========================================================
+   PAGE INTRO
+   ========================================================= */
+
+.page-intro {
+
+    margin-bottom: 30px;
+}
+
+
+.eyebrow {
+
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    margin-bottom: 7px;
+}
+
+
+.page-intro h1 {
+
+    margin:
+        0 0 10px;
+
+    color: var(--dark-purple);
+
+    font-size: 31px;
+
+    line-height: 1.25;
+
+    font-weight: 700;
+}
+
+
+.page-intro p {
+
+    max-width: 650px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   COMMON CARD
+   ========================================================= */
+
+.sleep-card {
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(75, 63, 114, 0.08);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+
+.section-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 15px;
+
+    background: var(--soft-lavender);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+
+    flex-shrink: 0;
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    color: var(--dark-purple);
+
+    font-size: 19px;
+
+    line-height: 1.3;
+
+    font-weight: 700;
+}
+
+
+.section-heading p {
+
+    margin: 4px 0 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-group {
+
+    margin-bottom: 25px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--secondary-purple);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.form-group small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   HOURS INPUT
+   ========================================================= */
+
+.hours-input {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.hours-input input {
+
+    width: 100%;
+
+    height: 54px;
+
+    padding:
+        0 80px 0 16px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    background: var(--very-light-lavender);
+
+    color: var(--text);
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition:
+        border 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.hours-input input:focus {
+
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(115, 87, 168, 0.08);
+}
+
+
+.hours-input span {
+
+    position: absolute;
+
+    right: 16px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   QUALITY OPTIONS
+   ========================================================= */
+
+.quality-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+.quality-option {
+
+    min-height: 100px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: var(--white);
+
+    color: var(--secondary-purple);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition:
+        border 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.quality-option:hover {
+
+    border-color: #CBBDE2;
+
+    background: var(--very-light-lavender);
+
+    transform: translateY(-1px);
+}
+
+
+.quality-option.selected {
+
+    border-color: var(--primary);
+
+    background: var(--soft-lavender);
+
+    color: var(--dark-purple);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(115, 87, 168, 0.08);
+}
+
+
+.quality-icon {
+
+    font-size: 24px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.primary-button {
+
+    min-height: 48px;
+
+    padding:
+        0 22px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: var(--primary);
+
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.primary-button:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-1px);
+}
+
+
+.primary-button:active {
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   SAVE AREA
+   ========================================================= */
+
+.save-area {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.message {
+
+    min-height: 20px;
+
+    margin: 0;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+
+.message.success {
+
+    color: var(--success);
+}
+
+
+.message.error {
+
+    color: var(--error);
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+.summary-box {
+
+    min-height: 115px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: var(--very-light-lavender);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.summary-label {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 8px;
+}
+
+
+.summary-value {
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 6px;
+}
+
+
+.summary-value strong {
+
+    color: var(--dark-purple);
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    font-weight: 700;
+}
+
+
+.summary-value span {
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.summary-box > strong {
+
+    color: var(--dark-purple);
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   REMINDER CARD
+   ========================================================= */
+
+.reminder-card {
+
+    overflow: hidden;
+}
+
+
+.reminder-form {
+
+    width: 100%;
+}
+
+
+.reminder-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 16px;
+}
+
+
+.reminder-input {
+
+    width: 100%;
+
+    height: 52px;
+
+    padding:
+        0 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background: var(--very-light-lavender);
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    transition:
+        border 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.reminder-input:focus {
+
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(115, 87, 168, 0.08);
+}
+
+
+.reminder-textarea {
+
+    width: 100%;
+
+    min-height: 95px;
+
+    resize: vertical;
+
+    padding:
+        13px 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    background: var(--very-light-lavender);
+
+    color: var(--text);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    transition:
+        border 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.reminder-textarea:focus {
+
+    border-color: var(--primary);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(115, 87, 168, 0.08);
+}
+
+
+/* =========================================================
+   REMINDER ACTIONS
+   ========================================================= */
+
+.reminder-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 3px;
+}
+
+
+.cancel-button {
+
+    min-height: 48px;
+
+    padding:
+        0 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 25px;
+
+    background: var(--white);
+
+    color: var(--secondary-purple);
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition:
+        border 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.cancel-button:hover {
+
+    border-color: #CBBDE2;
+
+    background: var(--very-light-lavender);
+}
+
+
+/* =========================================================
+   SAVED REMINDER
+   ========================================================= */
+
+.saved-reminder {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 12px;
+
+    padding: 17px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F8F5FC,
+            #FFFFFF
+        );
+}
+
+
+.saved-reminder-icon {
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 13px;
+
+    background: var(--soft-lavender);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+
+.saved-reminder-content {
+
+    min-width: 0;
+}
+
+
+.saved-label {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--primary);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+
+.saved-reminder-content h3 {
+
+    margin: 0;
+
+    color: var(--dark-purple);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.saved-reminder-content p {
+
+    margin: 3px 0 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+.saved-reminder-text {
+
+    color: var(--secondary-purple) !important;
+
+    font-size: 12px !important;
+}
+
+
+/* =========================================================
+   HIDDEN
+   ========================================================= */
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================================================
+   NOTIFICATION INFO
+   ========================================================= */
+
+.notification-info {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    padding:
+        12px 14px;
+
+    border-radius: 12px;
+
+    background: #FBF9FE;
+
+    border:
+        1px solid var(--border);
+}
+
+
+.notification-info span {
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+.notification-info p {
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   INSIGHT
+   ========================================================= */
+
+.insight-card {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F8F5FC,
+            #FFFFFF
+        );
+}
+
+
+.insight-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 15px;
+
+    background: var(--soft-lavender);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+    flex-shrink: 0;
+}
+
+
+.insight-content {
+
+    flex: 1;
+}
+
+
+.insight-label {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--primary);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+}
+
+
+.insight-content h2 {
+
+    margin: 0 0 6px;
+
+    color: var(--dark-purple);
+
+    font-size: 18px;
+
+    line-height: 1.4;
+}
+
+
+.insight-content p {
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   BEFORE BED
+   ========================================================= */
+
+.bedtime-box {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: var(--very-light-lavender);
+}
+
+
+.bedtime-box h3 {
+
+    margin: 0 0 5px;
+
+    color: var(--dark-purple);
+
+    font-size: 15px;
+}
+
+
+.bedtime-box p {
+
+    max-width: 570px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+.secondary-button {
+
+    min-width: 170px;
+
+    min-height: 46px;
+
+    padding:
+        0 18px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 24px;
+
+    background: var(--white);
+
+    color: var(--primary);
+
+    text-decoration: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        border 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.secondary-button:hover {
+
+    background: var(--soft-lavender);
+
+    border-color: #CBBDE2;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   PRIVACY
+   ========================================================= */
+
+.privacy-note {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    text-align: center;
+}
+
+
+.privacy-note span {
+
+    font-size: 14px;
+}
+
+
+.privacy-note p {
+
+    margin: 0;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+
+    .sleep-header {
+
+        height: 76px;
+
+        padding:
+            0 20px;
+    }
+
+
+    .mm-logo {
+
+        width: 39px;
+
+        height: 39px;
+    }
+
+
+    .mm-brand-text strong {
+
+        font-size: 18px;
+    }
+
+
+    .mm-brand-text span {
+
+        font-size: 8px;
+
+        letter-spacing: 1.2px;
+    }
+
+
+    .dashboard-button {
+
+        width: 125px;
+
+        height: 46px;
+
+        font-size: 12px;
+    }
+
+
+    .sleep-page {
+
+        width: min(
+            100% - 28px,
+            900px
+        );
+
+        padding-top: 38px;
+    }
+
+
+    .page-intro h1 {
+
+        font-size: 26px;
+    }
+
+
+    .sleep-card {
+
+        padding: 23px;
+
+        border-radius: 18px;
+    }
+
+
+    .quality-options {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .reminder-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+
+    .bedtime-box {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .secondary-button {
+
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+
+    .sleep-header {
+
+        padding:
+            0 14px;
+    }
+
+
+    .mm-brand {
+
+        gap: 8px;
+    }
+
+
+    .mm-logo {
+
+        width: 36px;
+
+        height: 36px;
+    }
+
+
+    .mm-brand-text strong {
+
+        font-size: 17px;
+    }
+
+
+    .mm-brand-text span {
+
+        display: none;
+    }
+
+
+    .dashboard-button {
+
+        width: 112px;
+
+        height: 43px;
+
+        font-size: 11px;
+    }
+
+
+    .sleep-page {
+
+        width: calc(100% - 22px);
+
+        padding:
+            30px 0 50px;
+    }
+
+
+    .page-intro h1 {
+
+        font-size: 23px;
+    }
+
+
+    .page-intro p {
+
+        font-size: 12px;
+    }
+
+
+    .sleep-card {
+
+        padding: 20px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .section-heading {
+
+        gap: 11px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .section-icon {
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 20px;
+
+        border-radius: 13px;
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 17px;
+    }
+
+
+    .section-heading p {
+
+        font-size: 11px;
+    }
+
+
+    .quality-option {
+
+        min-height: 90px;
+    }
+
+
+    .summary-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .reminder-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .reminder-actions button {
+
+        width: 100%;
+    }
+
+
+    .saved-reminder {
+
+        align-items: flex-start;
+    }
+
+
+    .insight-card {
+
+        gap: 12px;
+    }
+
+
+    .insight-icon {
+
+        width: 43px;
+
+        height: 43px;
+
+        border-radius: 12px;
+    }
+
+
+    .privacy-note {
+
+        padding:
+            0 10px;
+    }
+
+}
+
+
+/* ENABLE SLEEP NOTIFICATIONS BUTTON */
+#enablePushButton {
+    min-height: 42px;
+    padding: 0 18px;
+    margin-bottom: 0;
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
+
+    background: var(--soft-lavender);
+    color: var(--dark-purple);
+
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+#enablePushButton:hover {
+    background: var(--very-light-lavender);
+    transform: translateY(-1px);
+}
+
+#enablePushButton:active {
+    transform: translateY(0);
+}

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Support | MindMirror</title>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/social-support.css">
+    <link rel="stylesheet" href="CSS/common.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+<header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="page-container">
+
+
+        <!-- INTRO -->
+
+        <section class="intro">
+
+            <p class="eyebrow">
+                SOCIAL SUPPORT
+            </p>
+
+            <h1>
+                You don't have to face it alone.
+            </h1>
+
+            <p class="intro-text">
+                When things feel difficult, connecting with someone
+                you trust can be a small but meaningful step.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= STEP 1 ================= -->
+
+        <section class="support-card">
+
+            <div class="section-heading">
+
+                <span class="step-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h2>
+                        How are you feeling?
+                    </h2>
+
+                    <p>
+                        Choose what feels closest to you right now.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feeling-grid">
+
+                <button
+                    type="button"
+                    class="feeling-option"
+                    data-feeling="Lonely"
+                >
+                    <span>🤍</span>
+                    <strong>Lonely</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-option"
+                    data-feeling="Worried"
+                >
+                    <span>🌿</span>
+                    <strong>Worried</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-option"
+                    data-feeling="Low"
+                >
+                    <span>🌧️</span>
+                    <strong>Low</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-option"
+                    data-feeling="Overwhelmed"
+                >
+                    <span>🫶</span>
+                    <strong>Overwhelmed</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="feeling-option"
+                    data-feeling="Need someone"
+                >
+                    <span>💬</span>
+                    <strong>I need someone</strong>
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STEP 2 ================= -->
+
+        <section
+            class="support-card hidden"
+            id="peopleSection"
+        >
+
+            <div class="section-heading">
+
+                <span class="step-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h2>
+                        Who would you like to reach out to?
+                    </h2>
+
+                    <p>
+                        Choose someone you feel comfortable contacting.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Trusted People -->
+
+            <div
+                class="people-list"
+                id="peopleList"
+            ></div>
+
+
+            <!-- Add Person -->
+
+            <button
+                type="button"
+                class="add-person-btn"
+                id="addPersonBtn"
+            >
+                <span>＋</span>
+                Add someone I trust
+            </button>
+
+
+            <div
+                class="no-people hidden"
+                id="noPeopleMessage"
+            >
+
+                <div class="no-people-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Add someone you trust
+                </h3>
+
+                <p>
+                    Save a trusted person's details so MindMirror
+                    can make reaching out easier.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STEP 3 ================= -->
+
+        <section
+            class="reachout-card hidden"
+            id="reachOutSection"
+        >
+
+            <div class="section-heading">
+
+                <span class="step-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h2>
+                        Reach out
+                    </h2>
+
+                    <p>
+                        You can use the message below or change it
+                        to sound like you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Selected Person -->
+
+            <div class="selected-person">
+
+                <div class="person-avatar" id="selectedPersonAvatar">
+                    👤
+                </div>
+
+                <div>
+
+                    <span class="small-label">
+                        REACHING OUT TO
+                    </span>
+
+                    <h3 id="selectedPersonName">
+                        —
+                    </h3>
+
+                    <p id="selectedPersonRelationship">
+                        —
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Suggested Message -->
+
+            <div class="message-box">
+
+                <div class="message-header">
+
+                    <span>
+                        Suggested message
+                    </span>
+
+                    <button
+                        type="button"
+                        id="editMessageBtn"
+                        class="small-btn"
+                    >
+                        Edit
+                    </button>
+
+                </div>
+
+
+                <textarea
+                    id="supportMessage"
+                    rows="4"
+                    readonly
+                ></textarea>
+
+            </div>
+
+
+            <!-- Contact Buttons -->
+
+            <div class="contact-actions">
+
+                <button
+                    type="button"
+                    class="contact-btn call-btn"
+                    id="callBtn"
+                >
+
+                    <span class="contact-icon">
+                        📞
+                    </span>
+
+                    <span>
+                        Call
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="contact-btn message-btn"
+                    id="messageBtn"
+                >
+
+                    <span class="contact-icon">
+                        💬
+                    </span>
+
+                    <span>
+                        Message
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="contact-btn whatsapp-btn"
+                    id="whatsappBtn"
+                >
+
+                    <span class="contact-icon">
+                        🟢
+                    </span>
+
+                    <span>
+                        WhatsApp
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="copy-btn"
+                id="copyMessageBtn"
+            >
+                Copy message
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ================= STEP 4 ================= -->
+
+        <section
+            class="status-card hidden"
+            id="statusSection"
+        >
+
+            <div class="section-heading">
+
+                <span class="step-number">
+                    04
+                </span>
+
+                <div>
+
+                    <h2>
+                        What happened?
+                    </h2>
+
+                    <p>
+                        You can let MindMirror know what happened
+                        after reaching out.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-grid">
+
+                <button
+                    type="button"
+                    class="status-option"
+                    data-status="reached_out"
+                >
+                    <span>💌</span>
+
+                    <strong>
+                        I reached out
+                    </strong>
+
+                    <small>
+                        I sent a message or called.
+                    </small>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="status-option"
+                    data-status="connected"
+                >
+                    <span>💜</span>
+
+                    <strong>
+                        We connected
+                    </strong>
+
+                    <small>
+                        I talked or spent time with them.
+                    </small>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="status-option"
+                    data-status="still_need_support"
+                >
+                    <span>🫂</span>
+
+                    <strong>
+                        I still need support
+                    </strong>
+
+                    <small>
+                        I may need another form of support.
+                    </small>
+                </button>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="save-btn"
+                id="saveActionBtn"
+            >
+                Save Support Action
+            </button>
+
+        </section>
+
+
+
+        <!-- ================= STEP 5 ================= -->
+
+        <section
+            class="followup-card hidden"
+            id="followUpSection"
+        >
+
+            <div class="followup-icon">
+                💜
+            </div>
+
+            <div>
+
+                <p class="eyebrow">
+                    CHECK IN WITH YOURSELF
+                </p>
+
+                <h2>
+                    How are you feeling now?
+                </h2>
+
+                <p>
+                    There is no right answer. Just choose what feels
+                    closest to how you feel at this moment.
+                </p>
+
+            </div>
+
+
+            <div class="followup-options">
+
+                <button
+                    type="button"
+                    data-feeling="A little better"
+                >
+                    😊
+                    <span>A little better</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    data-feeling="About the same"
+                >
+                    😐
+                    <span>About the same</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    data-feeling="Still struggling"
+                >
+                    😔
+                    <span>Still struggling</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        
+
+    <!-- ================= ADD PERSON MODAL ================= -->
+
+    <div
+        class="modal-overlay hidden"
+        id="personModal"
+    >
+
+        <div class="modal">
+
+            <button
+                type="button"
+                class="close-modal"
+                id="closePersonModal"
+            >
+                ×
+            </button>
+
+
+            <p class="eyebrow">
+                SUPPORT CIRCLE
+            </p>
+
+            <h2>
+                Add someone you trust
+            </h2>
+
+
+            <label for="personName">
+                Name
+            </label>
+
+            <input
+                type="text"
+                id="personName"
+                placeholder="Example: Mom"
+            >
+
+
+            <label for="personRelationship">
+                Relationship
+            </label>
+
+            <input
+                type="text"
+                id="personRelationship"
+                placeholder="Example: Parent, Friend"
+            >
+
+
+            <label for="personPhone">
+                Phone number
+            </label>
+
+            <input
+                type="tel"
+                id="personPhone"
+                placeholder="Enter phone number"
+            >
+
+
+            <label for="preferredMethod">
+                Preferred contact method
+            </label>
+
+            <select id="preferredMethod">
+
+                <option value="call">
+                    Phone Call
+                </option>
+
+                <option value="sms">
+                    SMS
+                </option>
+
+                <option value="whatsapp">
+                    WhatsApp
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                class="save-btn"
+                id="savePersonBtn"
+            >
+                Add Person
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <script type="module" src="JS/social-support.js"></script>
+
+</body>
+</html>

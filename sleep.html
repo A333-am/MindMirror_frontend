@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sleep Companion | MindMirror</title>
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- =====================================================
+         SLEEP CSS
+    ====================================================== -->
+
+    <link rel="stylesheet" href="CSS/sleep.css">
+    <link rel="stylesheet" href="CSS/common.css">
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="mm-navbar">
+
+    <a href="dashboard.html" class="mm-brand">
+
+        <img src="Images/logo.png" alt="MindMirror" class="mm-logo">
+
+        <div class="mm-brand-text">
+            <strong>MindMirror</strong>
+            <span>AI WELLNESS SPACE</span>
+        </div>
+
+    </a>
+
+    <a href="dashboard.html" class="feature-dashboard-btn">
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="sleep-page">
+
+
+        <!-- =================================================
+             PAGE INTRO
+        ================================================== -->
+
+        <section class="page-intro">
+
+            <span class="eyebrow">
+                SLEEP COMPANION
+            </span>
+
+            <h1>
+                Rest well. Wake gently.
+            </h1>
+
+            <p>
+                Take a moment to understand your sleep and
+                build healthier nighttime habits.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SLEEP CHECK-IN
+        ================================================== -->
+
+        <section class="sleep-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🌙
+                </div>
+
+                <div>
+
+                    <h2>
+                        Sleep Check-in
+                    </h2>
+
+                    <p>
+                        Tell us about your sleep from last night.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SLEEP HOURS -->
+
+            <div class="form-group">
+
+                <label for="sleepHours">
+                    How many hours did you sleep?
+                </label>
+
+                <div class="hours-input">
+
+                    <input
+                        type="number"
+                        id="sleepHours"
+                        min="0"
+                        max="24"
+                        step="0.5"
+                        placeholder="e.g. 7.5"
+                    >
+
+                    <span>
+                        hours
+                    </span>
+
+                </div>
+
+                <small>
+                    Enter a value between 0 and 24 hours.
+                </small>
+
+            </div>
+
+
+
+            <!-- SLEEP QUALITY -->
+
+            <div class="form-group">
+
+                <label>
+                    How was your sleep quality?
+                </label>
+
+
+                <div class="quality-options">
+
+
+                    <button
+                        type="button"
+                        class="quality-option"
+                        data-quality="Poor"
+                    >
+
+                        <span class="quality-icon">
+                            😴
+                        </span>
+
+                        <span>
+                            Poor
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="quality-option"
+                        data-quality="Fair"
+                    >
+
+                        <span class="quality-icon">
+                            🌙
+                        </span>
+
+                        <span>
+                            Fair
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="quality-option"
+                        data-quality="Good"
+                    >
+
+                        <span class="quality-icon">
+                            😊
+                        </span>
+
+                        <span>
+                            Good
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="quality-option"
+                        data-quality="Excellent"
+                    >
+
+                        <span class="quality-icon">
+                            ✨
+                        </span>
+
+                        <span>
+                            Excellent
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SAVE -->
+
+            <div class="save-area">
+
+                <button
+                    type="button"
+                    id="saveSleepButton"
+                    class="primary-button"
+                >
+                    Save Sleep Record
+                </button>
+
+                <p
+                    id="sleepMessage"
+                    class="message"
+                    aria-live="polite"
+                ></p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SLEEP SUMMARY
+        ================================================== -->
+
+        <section class="sleep-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🌿
+                </div>
+
+                <div>
+
+                    <h2>
+                        Your Sleep Summary
+                    </h2>
+
+                    <p>
+                        A simple view of your latest sleep check-in.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="summary-grid">
+
+
+                <div class="summary-box">
+
+                    <span class="summary-label">
+                        SLEEP DURATION
+                    </span>
+
+                    <div class="summary-value">
+
+                        <strong id="summaryHours">
+                            —
+                        </strong>
+
+                        <span>
+                            hours
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="summary-box">
+
+                    <span class="summary-label">
+                        SLEEP QUALITY
+                    </span>
+
+                    <strong id="summaryQuality">
+                        —
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SLEEP REMINDER
+        ================================================== -->
+
+        <section class="sleep-card reminder-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ⏰
+                </div>
+
+                <div>
+
+                    <h2>
+                        Sleep Reminder
+                    </h2>
+
+                    <p>
+                        Set a gentle reminder to begin your bedtime routine.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REMINDER FORM -->
+
+            <div class="reminder-form">
+
+
+                <!-- REMINDER TYPE -->
+
+                <div class="form-group">
+
+                    <label for="reminderType">
+                        Reminder Type
+                    </label>
+
+                    <select
+                        id="reminderType"
+                        class="reminder-input"
+                    >
+
+                        <option value="Bedtime Reminder">
+                            Bedtime Reminder
+                        </option>
+
+                        <option value="Wind Down Reminder">
+                            Wind Down Reminder
+                        </option>
+
+                        <option value="Sleep Preparation">
+                            Sleep Preparation
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- DATE AND TIME -->
+
+                <div class="reminder-row">
+
+
+                    <div class="form-group">
+
+                        <label for="reminderDate">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reminderDate"
+                            class="reminder-input"
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="reminderTime">
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="reminderTime"
+                            class="reminder-input"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-group">
+
+                    <label for="reminderMessage">
+                        Reminder Message
+                    </label>
+
+                    <textarea
+                        id="reminderMessage"
+                        class="reminder-textarea"
+                        maxlength="250"
+                        placeholder="e.g. It's time to start your bedtime routine."
+                    ></textarea>
+
+                    <small>
+                        Keep your reminder gentle and encouraging.
+                    </small>
+
+                </div>
+
+
+
+                <!-- REMINDER ACTIONS -->
+
+                <div class="reminder-actions">
+
+
+                    <button
+                        type="button"
+                        id="saveReminderButton"
+                        class="primary-button"
+                    >
+                        Save Sleep Reminder
+                    </button>
+
+<button id="enablePushButton">Enable Sleep Notifications</button>
+
+
+                    <button
+                        type="button"
+                        id="cancelReminderButton"
+                        class="cancel-button"
+                    >
+                        Cancel Reminder
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- REMINDER MESSAGE -->
+
+                <p
+                    id="reminderMessageStatus"
+                    class="message"
+                    aria-live="polite"
+                ></p>
+
+
+            </div>
+
+
+
+            <!-- SAVED REMINDER -->
+
+            <div
+                id="savedReminder"
+                class="saved-reminder hidden"
+            >
+
+
+                <div class="saved-reminder-icon">
+                    🔔
+                </div>
+
+
+                <div class="saved-reminder-content">
+
+                    <span class="saved-label">
+                        REMINDER SET
+                    </span>
+
+                    <h3 id="savedReminderTitle">
+                        Bedtime Reminder
+                    </h3>
+
+                    <p id="savedReminderDate">
+                        —
+                    </p>
+
+                    <p
+                        id="savedReminderText"
+                        class="saved-reminder-text"
+                    >
+                        —
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BROWSER NOTIFICATION INFO -->
+
+            <div class="notification-info">
+
+                <span>
+                    🔔
+                </span>
+
+                <p>
+    Allow browser notifications to receive your bedtime reminder.
+    Keep your browser running and notifications enabled.
+</p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             GENTLE INSIGHT
+        ================================================== -->
+
+        <section class="sleep-card insight-card">
+
+
+            <div class="insight-icon">
+                💜
+            </div>
+
+
+            <div class="insight-content">
+
+                <span class="insight-label">
+                    GENTLE INSIGHT
+                </span>
+
+                <h2 id="sleepInsightTitle">
+                    Your sleep matters
+                </h2>
+
+                <p id="sleepInsightText">
+                    Understanding your sleep patterns can help
+                    you create healthier habits and support
+                    your overall wellbeing.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             BEFORE BED
+        ================================================== -->
+
+        <section class="sleep-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🧘
+                </div>
+
+                <div>
+
+                    <h2>
+                        Before Bed
+                    </h2>
+
+                    <p>
+                        Give your mind a peaceful moment before sleeping.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="bedtime-box">
+
+
+                <div>
+
+                    <h3>
+                        Wind down with relaxation
+                    </h3>
+
+                    <p>
+                        Take a few quiet minutes to breathe slowly,
+                        relax your body and prepare your mind for sleep.
+                    </p>
+
+                </div>
+
+
+
+                <a
+                    href="relax.html"
+                    class="secondary-button"
+                >
+                    Start Relaxation
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRIVACY NOTE
+        ================================================== -->
+
+        <div class="privacy-note">
+
+            <span>
+                🔒
+            </span>
+
+            <p>
+                Your sleep information is part of your personal
+                wellness experience.
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+<script type="module" src="JS/sleep.js"></script>
+</body>
+
+</html>
