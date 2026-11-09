@@ -277,3 +277,31 @@ h1, h2, h3, h4, p, label, input, textarea, select, button {
         gap: 16px;
     }
 }
+
+/* Center Ven chatbot page */
+.therapist-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+/* Center the main Ven card */
+.therapist-container .chatbot-container {
+    width: 100%;
+    max-width: 765px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .therapist-container {
+        padding: 20px 12px;
+    }
+
+    .therapist-container .chatbot-container {
+        width: 100%;
+    }
+}
