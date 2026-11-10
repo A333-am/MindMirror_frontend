@@ -41,10 +41,9 @@ let currentReminderId = null;
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
         try {
-            const registration = await navigator.serviceWorker.register(
-                "/sw.js"
-            );
-
+            const registration = await navigator.serviceWorker.register("../sw.js", {
+    scope: "../"
+});
             console.log("Service Worker registered successfully:", registration);
         } catch (error) {
             console.error("Service Worker registration failed:", error);
@@ -552,13 +551,36 @@ function requestNotificationPermission() {
     }
 }
 
-function showSleepNotification(reminder) {
+async function showSleepNotification(reminder) {
     const title = reminder.notification_type || "Sleep Reminder";
+
     const message =
         reminder.message || "It's time to start your bedtime routine.";
 
     showReminderMessage(`${title}: ${message}`, "success");
+
     savedReminder.classList.add("reminder-triggered");
+
+    try {
+        if (
+            "Notification" in window &&
+            Notification.permission === "granted" &&
+            "serviceWorker" in navigator
+        ) {
+            const registration = await navigator.serviceWorker.ready;
+
+            await registration.showNotification(title, {
+                body: message,
+                icon: new URL(
+                    "./Images/logo.png",
+                    registration.scope
+                ).href,
+                tag: "mindmirror-sleep-reminder"
+            });
+        }
+    } catch (error) {
+        console.error("Sleep notification failed:", error);
+    }
 
     setTimeout(() => {
         savedReminder.classList.remove("reminder-triggered");
