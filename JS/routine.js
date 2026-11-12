@@ -1413,22 +1413,44 @@ function showReminderPopup(message) {
    BROWSER NOTIFICATION
    ========================================================= */
 
-function showBrowserNotification(message) {
+  
+async function showBrowserNotification(message) {
 
-    if (!("Notification" in window)) {
+    if (
+        !("Notification" in window) ||
+        !("serviceWorker" in navigator)
+    ) {
         return;
     }
 
-    if (Notification.permission === "granted") {
+    if (Notification.permission !== "granted") {
+        return;
+    }
 
-        new Notification(
+    try {
+        const registration = await navigator.serviceWorker.register(
+            "./sw.js",
+            { scope: "./" }
+        );
+
+        await registration.showNotification(
             "MindMirror - Routine Reminder",
             {
                 body: message,
-                icon: "Images/logo.png"
+                icon: new URL(
+                    "./Images/logo.png",
+                    window.location.href
+                ).href,
+                badge: new URL(
+                    "./Images/logo.png",
+                    window.location.href
+                ).href,
+                tag: "mindmirror-routine-reminder"
             }
         );
 
+    } catch (error) {
+        console.error("Routine notification error:", error);
     }
 
 }
