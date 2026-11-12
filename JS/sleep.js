@@ -41,16 +41,23 @@ let currentReminderId = null;
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
         try {
-            const registration = await navigator.serviceWorker.register("../sw.js", {
-    scope: "../"
-});
-            console.log("Service Worker registered successfully:", registration);
+            const registration =
+                await navigator.serviceWorker.register("./sw.js", {
+                    scope: "./"
+                });
+
+            console.log(
+                "MindMirror Service Worker registered:",
+                registration.scope
+            );
         } catch (error) {
-            console.error("Service Worker registration failed:", error);
+            console.error(
+                "Service Worker registration failed:",
+                error
+            );
         }
     });
 }
-
 /* ---------- AUTHENTICATED API HELPER ---------- */
 
 async function apiRequest(path, options = {}) {
