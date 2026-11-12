@@ -1,11 +1,10 @@
 
 self.addEventListener("push", function (event) {
-    console.log("MindMirror push event received");
-
     let data = {
         title: "MindMirror 🌙",
-        body: "It's time to start your bedtime routine.",
-        url: "/sleep.html"
+        body: "It's time for your reminder.",
+        url: "./sleep.html",
+        tag: "mindmirror-reminder"
     };
 
     if (event.data) {
@@ -15,38 +14,40 @@ self.addEventListener("push", function (event) {
             data.title = payload.title || data.title;
             data.body = payload.body || data.body;
             data.url = payload.url || data.url;
+            data.tag = payload.tag || data.tag;
         } catch (error) {
             data.body = event.data.text() || data.body;
         }
     }
 
+    const iconUrl = new URL("./Images/logo.png", self.registration.scope).href;
+    const targetUrl = new URL(data.url, self.registration.scope).href;
+
     event.waitUntil(
         self.registration.showNotification(data.title, {
             body: data.body,
-            icon: "/Images/logo.png",
-            badge: "/Images/logo.png",
-            tag: "mindmirror-sleep-reminder",
+            icon: iconUrl,
+            badge: iconUrl,
+            tag: data.tag,
             data: {
-                url: data.url
+                url: targetUrl
             }
         })
     );
 });
 
-/* ---------- NOTIFICATION CLICK ---------- */
-
 self.addEventListener("notificationclick", function (event) {
     event.notification.close();
 
     const targetUrl =
-        event.notification.data?.url || "/sleep.html";
+        event.notification.data?.url ||
+        new URL("./sleep.html", self.registration.scope).href;
 
     event.waitUntil(
         clients.matchAll({
             type: "window",
             includeUncontrolled: true
         }).then(function (windowClients) {
-
             for (const client of windowClients) {
                 if ("focus" in client) {
                     client.navigate(targetUrl);
