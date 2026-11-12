@@ -654,9 +654,7 @@ function getFirebaseToken() {
         );
 
 
-        scheduleNotification(
-            reminder
-        );
+        checkSelfCareReminders();
     }
 
 
@@ -809,58 +807,77 @@ function getFirebaseToken() {
        ENABLE NOTIFICATIONS
        ===================================== */
 
-    async function enableNotifications() {
+    
+async function enableNotifications() {
 
-        if (!("Notification" in window)) {
-
-            alert(
-                "Your browser does not support notifications."
-            );
-
-            return;
-        }
-
-
-        try {
-
-            const permission =
-                await Notification.requestPermission();
-
-
-            updateNotificationUI();
-
-
-            if (permission === "granted") {
-
-                showToast(
-                    "Notifications enabled."
-                );
-
-                new Notification(
-                    "MindMirror 🌿",
-                    {
-                        body:
-                            "Your self-care notifications are enabled."
-                    }
-                );
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "Notification error:",
-                error
-            );
-        }
+    if (
+        !("Notification" in window) ||
+        !("serviceWorker" in navigator)
+    ) {
+        alert("Your browser does not support notifications.");
+        return;
     }
+
+    try {
+        await navigator.serviceWorker.register(
+            "./sw.js",
+            { scope: "./" }
+        );
+
+        const permission = await Notification.requestPermission();
+
+        updateNotificationUI();
+
+        if (permission === "granted") {
+
+            const registration = await navigator.serviceWorker.ready;
+
+            await registration.showNotification(
+                "MindMirror 🌿",
+                {
+                    body: "Your self-care notifications are enabled.",
+                    icon: new URL(
+                        "./Images/logo.png",
+                        window.location.href
+                    ).href,
+                    badge: new URL(
+                        "./Images/logo.png",
+                        window.location.href
+                    ).href,
+                    tag: "mindmirror-self-care-test",
+                    data: {
+                        url: new URL(
+                            "./self-care.html",
+                            window.location.href
+                        ).href
+                    }
+                }
+            );
+
+            showToast("Notifications enabled successfully.");
+
+        } else {
+            showToast("Please allow notifications in your browser settings.");
+        }
+
+    } catch (error) {
+        console.error("Self-care notification error:", error);
+        showToast("Unable to enable notifications.");
+    }
+}
+
 
 
     /* =====================================
        SCHEDULE NOTIFICATION
        ===================================== */
 
-    function scheduleNotification(reminder) {
+    
+const TRIGGERED_KEY = "mindmirrorSelfCareTriggered";
+
+async function showSelfCareNotification(reminder) {
+
+    try {
 
         if (
             !("Notification" in window) ||
@@ -869,46 +886,103 @@ function getFirebaseToken() {
             return;
         }
 
+        const registration = await navigator.serviceWorker.ready;
 
-        const reminderDateTime =
-            new Date(
-                `${reminder.date}T${reminder.time}`
-            );
+        await registration.showNotification(
+            "MindMirror Self-Care 🌿",
+            {
+                body: reminder.message,
+                icon: new URL(
+                    "./Images/logo.png",
+                    window.location.href
+                ).href,
+                badge: new URL(
+                    "./Images/logo.png",
+                    window.location.href
+                ).href,
+                tag: `mindmirror-self-care-${reminder.id}`,
+                data: {
+                    url: new URL(
+                        "./self-care.html",
+                        window.location.href
+                    ).href
+                }
+            }
+        );
 
+    } catch (error) {
+        console.error("Self-care notification display error:", error);
+    }
+}
 
-        const now =
-            new Date();
+function checkSelfCareReminders() {
 
+    if (
+        !("Notification" in window) ||
+        Notification.permission !== "granted"
+    ) {
+        return;
+    }
 
-        const delay =
-            reminderDateTime.getTime() -
-            now.getTime();
+    const reminders = getReminders();
 
+    let triggered = [];
 
-        if (delay <= 0) {
-            return;
+    try {
+        triggered = JSON.parse(
+            localStorage.getItem(TRIGGERED_KEY) || "[]"
+        );
+
+        if (!Array.isArray(triggered)) {
+            triggered = [];
         }
 
-
-        setTimeout(function () {
-
-            if (
-                Notification.permission ===
-                "granted"
-            ) {
-
-                new Notification(
-                    "MindMirror Self-Care 🌿",
-                    {
-                        body:
-                            reminder.message
-                    }
-                );
-
-            }
-
-        }, delay);
+    } catch (error) {
+        console.error("Unable to load triggered reminders:", error);
     }
+
+    const now = new Date();
+
+    for (const reminder of reminders) {
+
+        if (
+            reminder.completed ||
+            !reminder.date ||
+            !reminder.time
+        ) {
+            continue;
+        }
+
+        const reminderDateTime = new Date(
+            `${reminder.date}T${reminder.time}`
+        );
+
+        if (Number.isNaN(reminderDateTime.getTime())) {
+            continue;
+        }
+
+        const difference =
+            now.getTime() - reminderDateTime.getTime();
+
+        const triggerKey = String(reminder.id);
+
+        if (
+            difference >= 0 &&
+            difference <= 5 * 60 * 1000 &&
+            !triggered.includes(triggerKey)
+        ) {
+
+            triggered.push(triggerKey);
+
+            localStorage.setItem(
+                TRIGGERED_KEY,
+                JSON.stringify(triggered)
+            );
+
+            showSelfCareNotification(reminder);
+        }
+    }
+}
 
 
     /* =====================================
@@ -965,5 +1039,15 @@ if (dashboardBtn) {
     renderReminders();
 
     updateNotificationUI();
+
+    checkSelfCareReminders();
+
+setInterval(checkSelfCareReminders, 30 * 1000);
+
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") {
+        checkSelfCareReminders();
+    }
+});
 
 });
